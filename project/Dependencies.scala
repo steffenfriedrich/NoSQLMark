@@ -104,7 +104,7 @@ object Dependencies {
   val ycsb_core = Seq("com.yahoo.ycsb" % "core" % ycsb_version)
 
   val ycsb_bindings = Seq(
-    "com.yahoo.ycsb" % "accumulo-binding" % ycsb_version,
+    //"com.yahoo.ycsb" % "accumulo-binding" % ycsb_version,
     "com.yahoo.ycsb" % "aerospike-binding" % ycsb_version,
     "com.yahoo.ycsb" % "arangodb-binding" % ycsb_version,
     "com.yahoo.ycsb" % "arangodb3-binding" % ycsb_version,
