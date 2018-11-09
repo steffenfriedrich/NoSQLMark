@@ -4,24 +4,19 @@ import java.util.concurrent.locks.LockSupport
 
 import akka.actor._
 import akka.event.Logging
-import akka.pattern.after
-import com.yahoo.ycsb.{DB, DBException, Status, WorkloadException}
+import com.yahoo.ycsb.{DB, DBException, WorkloadException}
 import de.unihamburg.informatik.nosqlmark.api.CoreJob
-import de.unihamburg.informatik.nosqlmark.protocols.WorkerProtocol.DoOperation
 import de.unihamburg.informatik.nosqlmark.protocols._
 import de.unihamburg.informatik.nosqlmark.status.WorkStatus
 import de.unihamburg.informatik.nosqlmark.workloads._
 
 import scala.concurrent.{Future, blocking}
-import scala.concurrent.duration._
 import scala.util.{Failure, Success}
 import akka.pattern.after
 
 import scala.concurrent.duration._
 import com.yahoo.ycsb.Status
-import de.unihamburg.informatik.nosqlmark.concurrent.IOExecutionContext
 import de.unihamburg.informatik.nosqlmark.generator._
-import org.apache.hadoop.mapreduce.v2.app.speculate.ExponentiallySmoothedTaskRuntimeEstimator
 
 object CoreWorker {
   def props(workerID: String, db: DB, work: CoreJob, workloadHelper: CoreWorkload, measurementActor: ActorRef): Props =
