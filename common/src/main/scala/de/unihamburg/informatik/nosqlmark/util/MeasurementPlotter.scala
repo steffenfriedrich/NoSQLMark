@@ -1,7 +1,6 @@
 package de.unihamburg.informatik.nosqlmark.util
 
 import java.awt.{BasicStroke, Color, Font}
-import javafx.scene.chart.Chart
 
 import org.HdrHistogram.Histogram
 import org.knowm.xchart.{SwingWrapper, XYChart, XYChartBuilder}
