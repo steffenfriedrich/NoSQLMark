@@ -1,0 +1,144 @@
+<configuration scan="true" scanPeriod="5 seconds">
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date{ISO8601} | %-5level | %X{akkaSource} %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/akka.log</file>
+		<encoder>
+			<pattern>%date{ISO8601} | %-5level | %X{akkaSource} %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>logs/akka.%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>20</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>50MB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<appender name="NOSQLMARK-FILE"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/nosqlmark.log</file>
+		<encoder>
+			<pattern>%date{ISO8601} | %-5level | %X{akkaSource} %msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>logs/nosqlmark.%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>20</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>50MB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<appender name="TIMESERIES-FILE"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/timeseries.log</file>
+		<encoder>
+			<pattern>%date{ISO8601};%msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/timeseries-%d{yyyyMMdd_HH}%d{mmss}.%i.log</fileNamePattern>
+			<timeBasedFileNamingAndTriggeringPolicy class="de.unihamburg.informatik.nosqlmark.logging.MyTrigger">
+				<maxFileSize>50MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+	</appender>
+
+	<appender name="SICKSTORE-FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/sickstore.log</file>
+		<encoder>
+			<pattern>%date{ISO8601};%msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>logs/sickstore.%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>20</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>50MB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<appender name="STALENESS-FILE"
+			  class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>logs/staleness.log</file>
+		<encoder>
+			<pattern>%date{ISO8601};%msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
+			<fileNamePattern>logs/staleness.%i.log</fileNamePattern>
+			<minIndex>1</minIndex>
+			<maxIndex>20</maxIndex>
+		</rollingPolicy>
+		<triggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+			<maxFileSize>50MB</maxFileSize>
+		</triggeringPolicy>
+	</appender>
+
+	<logger name="NoSQLMark" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="NOSQLMARK-FILE" />
+	</logger>
+
+	<logger name="BackbenchService" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="NOSQLMARK-FILE" />
+	</logger>
+
+	<logger name="Master" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="NOSQLMARK-FILE"/>
+	</logger>
+
+	<logger name="Worker" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="NOSQLMARK-FILE" />
+	</logger>
+
+	<logger name="Timeseries" level="debug" additivity="false">
+		<appender-ref ref="TIMESERIES-FILE" />
+	</logger>
+
+	<logger name="MeasurementsActor" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="NOSQLMARK-FILE" />
+	</logger>
+
+	<logger name="MeasurementsAggregator" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="NOSQLMARK-FILE" />
+	</logger>
+
+	<logger name="Workload" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="NOSQLMARK-FILE" />
+	</logger>
+
+	<logger name="ClientActor" level="debug" additivity="false">
+		<appender-ref ref="STDOUT"/>
+		<appender-ref ref="NOSQLMARK-FILE" />
+	</logger>
+
+	<logger name="sickstore" level="debug" additivity="false">
+		<appender-ref ref="SICKSTORE-FILE" />
+	</logger>
+
+	<logger name="staleness" level="debug" additivity="false">
+		<appender-ref ref="STALENESS-FILE" />
+	</logger>
+
+	<root level="debug">
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

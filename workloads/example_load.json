@@ -1,0 +1,53 @@
+{
+  "jobID" : "1465550425878-13410011235-0",
+  "batchname" : "Example Workload",
+  "workload" : "CoreWorkload",
+  "dbname" : "SickStoreClient",
+  "dbproperties" : {
+    "sickstore.port" : "54000",
+    "sickstore.write_concern.journaling" : "false",
+    "sickstore.timeout" : "1000",
+    "sickstore.localconfig" : "./config/sickstore/config_no_delay.yml",
+    "sickstore.write_concern.ack" : "0",
+    "sickstore.read_preference" : "secondary"
+  },
+  "target" : 1000,
+  "nodes" : 1,
+  "worker" : 8,
+  "table" : "usertable",
+  "columnfamily" : "family",
+  "phase" : "load",
+  "asyncmode" : true,
+  "counts" : {
+    "recordcount" : 20000,
+    "warmupcount" : 0,
+    "operationcount" : 20000,
+    "insertcount" : 20000,
+    "insertstart" : 0,
+    "fieldcount" : 10,
+    "fieldlength" : 100,
+    "readallfields" : true,
+    "writeallfields" : true
+  },
+  "proportions" : {
+    "readproportion" : 0.5,
+    "updateproportion" : 0.5,
+    "insertproportion" : 0,
+    "scanproportion" : 0,
+    "readmodifywriteproportion" : 0
+  },
+  "distributions" : {
+    "requestdistribution" : "zipfian",
+    "insertorder" : "hashed",
+    "fieldlengthdistribution" : "constant",
+    "fieldlengthhistogram" : "hist.txt",
+    "scanlengthdistribution" : "uniform",
+    "maxscanlength" : 1000,
+    "hotspotdatafraction" : 0.2,
+    "hotspotopnfraction" : 0.8,
+    "exponentialpercentile" : 95,
+    "exponentialfrac" : 0.8571428571
+  },
+  "logmeasurements" : false,
+  "logjvmstats": false
+}

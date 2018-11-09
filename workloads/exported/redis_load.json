@@ -1,0 +1,52 @@
+{
+  "jobID" : "1493823860071-13410011237-0",
+  "batchname" : "RedisIntegrationSpec",
+  "workload" : "CoreWorkload",
+  "dbname" : "RedisClient",
+  "dbproperties" : {
+    "redis.host" : "134.100.11.133"
+  },
+  "target" : 1000,
+  "nodes" : 1,
+  "worker" : 1,
+  "table" : "usertable",
+  "columnfamily" : "family",
+  "phase" : "load",
+  "asyncmode" : true,
+  "counts" : {
+    "recordcount" : 600000,
+    "warmupcount" : 120000,
+    "operationcount" : 600000,
+    "insertcount" : 600000,
+    "insertstart" : 0,
+    "fieldcount" : 10,
+    "fieldlength" : 100,
+    "readallfields" : true,
+    "writeallfields" : true
+  },
+  "proportions" : {
+    "readproportion" : 0.5,
+    "updateproportion" : 0.5,
+    "insertproportion" : 0,
+    "scanproportion" : 0,
+    "readmodifywriteproportion" : 0
+  },
+  "distributions" : {
+    "requestdistribution" : "zipfian",
+    "insertorder" : "hashed",
+    "fieldlengthdistribution" : "constant",
+    "fieldlengthhistogram" : "hist.txt",
+    "scanlengthdistribution" : "uniform",
+    "maxscanlength" : 1000,
+    "hotspotdatafraction" : 0.2,
+    "hotspotopnfraction" : 0.8,
+    "exponentialpercentile" : 95,
+    "exponentialfrac" : 0.8571428571
+  },
+  "loadgeneration" : {
+    "schedulingmethod" : "adaptive",
+    "interrequesttimedistribution" : "constant"
+  },
+  "logmeasurements" : true,
+  "logjvmstats" : false
+}

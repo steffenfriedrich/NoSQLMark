@@ -1,0 +1,52 @@
+{
+  "jobID" : "1455542075687-13410011222-0",
+  "batchname" : "",
+  "workload" : "CoreWorkload",
+  "dbname" : "com.yahoo.ycsb.db.CassandraCQLClient2",
+  "dbproperties" : {
+    "hosts" : "10.10.100.16,10.10.100.19,10.10.100.20",
+    "cassandra.readconsistencylevel" : "ONE",
+    "cassandra.writeconsistencylevel" : "ONE",
+    "cassandra.maxconnections": "64",
+    "cassandra.coreconnections" : "16"
+  },
+  "target" : 1000,
+  "nodes" : 1,
+  "worker" : 1,
+  "table" : "usertable",
+  "columnfamily" : "family",
+  "phase" : "load",
+  "asyncmode" : true,
+  "counts" : {
+    "recordcount" : 200000,
+    "warmupcount" : 0,
+    "operationcount" : 200000,
+    "insertcount" : 200000,
+    "insertstart" : 0,
+    "fieldcount" : 10,
+    "fieldlength" : 100,
+    "readallfields" : true,
+    "writeallfields" : true
+  },
+  "proportions" : {
+    "readproportion" : 0.5,
+    "updateproportion" : 0.5,
+    "insertproportion" : 0,
+    "scanproportion" : 0,
+    "readmodifywriteproportion" : 0
+  },
+  "distributions" : {
+    "requestdistribution" : "zipfian",
+    "insertorder" : "hashed",
+    "fieldlengthdistribution" : "constant",
+    "fieldlengthhistogram" : "hist.txt",
+    "scanlengthdistribution" : "uniform",
+    "maxscanlength" : 1000,
+    "hotspotdatafraction" : 0.2,
+    "hotspotopnfraction" : 0.8,
+    "exponentialpercentile" : 95,
+    "exponentialfrac" : 0.8571428571
+  },
+  "logmeasurements" : true,
+  "logjvmstats": false
+}
